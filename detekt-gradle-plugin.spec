@@ -142,6 +142,8 @@ grep -F -q '"artifactId": "detekt-gradle-plugin"' "$impl"
 grep -F -q '"version": "2.0.0-alpha.4"' "$marker"
 grep -F -q '"artifactId": "dev.detekt.gradle.plugin"' "$marker"
 test -s %{buildroot}%{_javadir}/detekt-gradle-plugin.jar
+export JAVA_HOME=%{_jvmdir}/java-21-openjdk
+export PATH="$JAVA_HOME/bin:/usr/bin:/bin"
 jar tf %{buildroot}%{_javadir}/detekt-gradle-plugin.jar > installed-plugin.list
 grep -F -qx 'META-INF/gradle-plugins/dev.detekt.properties' installed-plugin.list
 if grep -F -q 'org/gradle/testing/base/TestSuite.class' installed-plugin.list; then
