@@ -1,6 +1,6 @@
 Name:		detekt-gradle-plugin
 Version:	2.0.0.alpha.4
-Release:	1
+Release:	2
 Summary:	Detekt Gradle plugin
 Group:		Development/Java
 License:	Apache-2.0
@@ -13,7 +13,9 @@ URL:		https://github.com/detekt/detekt
 # The Gradle 8.13 TestSuite overlay is compile-only and is not installed.
 # com.android.tools.build:gradle, the Android plugin, is not bundled.
 Source0:	detekt-gradle-plugin-%{version}.tar.gz
-Provides:	mvn(dev.detekt:dev.detekt.gradle.plugin) = 2.0.0-alpha.4
+# A hyphen in an RPM provide is the release separator, so 2.0.0-alpha.4
+# would be indexed as version 2.0.0. The dotted form keeps the catalog pin.
+Provides:	mvn(dev.detekt:dev.detekt.gradle.plugin) = 2.0.0.alpha.4
 
 BuildArch:	noarch
 BuildRequires:	java-21-openjdk-devel
